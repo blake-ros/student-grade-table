@@ -3,6 +3,7 @@ class GradeTable {
   this.tableElement = this.tableElement,
   }
   updateGrades(grades){
+    var tableElement = document.body.querySelector("tbody");
     console.log(grades)
   }
 }
