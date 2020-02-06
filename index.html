@@ -21,7 +21,8 @@
     </h2>
   </header>
 </div>
-  <table id="table" class="col-8 table table-striped table-bordered">
+<div class="row">
+  <table id="table" class="col-8 table table-striped table-bordered ml-3">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Student Name</th>
@@ -32,6 +33,17 @@
       <tbody>
       </tbody>
   </table>
+<form class="col-3">
+  <div class="form-group">
+    <i class="fas fa-user"></i>
+    <input class="form-control form-control-lg" type="text" placeholder="Name">
+    <input class="form-control form-control-lg" type="text" placeholder="Course">
+    <input class="form-control form-control-lg" type="text" placeholder="Grade">
+    <input type="reset">
+    <input type="submit">
+  </div>
+</form>
+</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script src="./components/app.js"></script>
   <script src="./components/grade-table.js"></script>
