@@ -30,4 +30,7 @@ class App {
   start(){
     this.getGrades();
   }
+  createGame(name, course, grade){
+    console.log(name, course, grade);
+  }
 }
