@@ -27,6 +27,6 @@ class App {
     })
   }
   start(){
-    this.getGrades();
+    this.getGrades;
   }
 }
