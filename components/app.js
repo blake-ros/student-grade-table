@@ -5,6 +5,9 @@ class App {
     this.gradeTable = gradeTable;
     this.pageHeader = pageHeader;
     this.gradeForm = gradeForm;
+    this.createGame = this.createGame.bind(this);
+    this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
+    this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
   }
   handleGetGradesError(error){
     console.error(error);
