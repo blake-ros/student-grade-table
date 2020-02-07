@@ -32,7 +32,7 @@ class App {
   }
   start(){
     this.getGrades();
-    this.cre
+    this.gradeForm.onSubmit(this.createGrade);
   }
   createGrade(name, course, grade){
     console.log(name, course, grade);
