@@ -5,7 +5,7 @@ class App {
     this.gradeTable = gradeTable;
     this.pageHeader = pageHeader;
     this.gradeForm = gradeForm;
-    this.createGame = this.createGame.bind(this);
+    this.createGrade = this.createGrade.bind(this);
     this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
     this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
   }
@@ -32,8 +32,9 @@ class App {
   }
   start(){
     this.getGrades();
+    this.cre
   }
-  createGame(name, course, grade){
+  createGrade(name, course, grade){
     console.log(name, course, grade);
   }
   handleCreateGradeError(error){
