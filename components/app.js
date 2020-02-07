@@ -57,4 +57,7 @@ class App {
   handleDeleteGradeError(error){
     console.error(error);
   }
+  handleDeleteGradeSuccess(){
+    this.getGrades;
+  }
 }
