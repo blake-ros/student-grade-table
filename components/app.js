@@ -33,4 +33,11 @@ class App {
   createGame(name, course, grade){
     console.log(name, course, grade);
   }
+  handleCreateGradeError(error){
+    console.error(error);
+  }
+  handleCreateGradeSuccess(){
+    this.getGrades();
+  }
+
 }
