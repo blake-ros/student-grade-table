@@ -49,7 +49,7 @@ class App {
     console.error(error);
   }
   handleCreateGradeSuccess(){
-    this.getGrades();
+    this.getGrades;
   }
 
 }
