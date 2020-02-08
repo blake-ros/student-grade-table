@@ -53,6 +53,9 @@ class GradeTable {
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
+      button2.addEventListener("click", function() {
+
+      })
       tableData4.appendChild(button2);
       tableData4.appendChild(button);
       button.appendChild(iconDelete);

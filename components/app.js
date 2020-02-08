@@ -9,6 +9,7 @@ class App {
     this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
     this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
+    this.editGrade = this.editGrade.bind(this);
     this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
     this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
   }
@@ -62,7 +63,22 @@ class App {
       error: this.handleDeleteGradeError,
       success: this.handleDeleteGradeSuccess,
     })
-
+  }
+  editGrade(id, name, course, grade){
+    $.ajax({
+      method: "PATCH",
+      url: "http://sgt.lfzprototypes.com/api/grades/"+ id,
+      headers: { "X-access-token": "0qwwK16q" },
+      data: {"name": name, "course": course, "grade": grade},
+      success: this.handleEditGradeSuccess,
+      error: this.handleEditGradeError
+    })
+  }
+  handleEditGradeError(error){
+    console.error(error);
+  }
+  handleEditGradeSuccess(){
+    this.getGrades();
   }
   handleDeleteGradeError(error){
     console.error(error);
