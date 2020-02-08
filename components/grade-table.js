@@ -12,7 +12,7 @@ class GradeTable {
     }
 
     for(var i = 0; i < grades.length; i++){
-      var renderGrade = this.renderGradeRow(grades[i], this.deleteGrade);
+      this.renderGradeRow(grades[i], this.deleteGrade);
 
       // tableBody.append(renderGrade);
     }
@@ -43,7 +43,7 @@ class GradeTable {
       button.textContent = "DELETE";
       button.classList.add('btn');
       button.classList.add('btn-danger');
-      button.setAttribute("type", "submit");
+      // button.setAttribute("type", "submit");
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
