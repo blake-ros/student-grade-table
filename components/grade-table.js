@@ -45,12 +45,11 @@ class GradeTable {
         })
       tableData4.appendChild(button);
 
-      tableRow.append(tableData);
-      tableRow.append(tableData2);
-      tableRow.append(tableData3);
-      tableRow.append(tableData4);
-
-      tableBody.append(tableRow);
+      tableRow.appendChild(tableData)
+      tableRow.appendChild(tableData2)
+      tableRow.appendChild(tableData3)
+      tableRow.appendChild(tableData4);
+      tableBody.appendChild(tableRow);
     }
 
   }
