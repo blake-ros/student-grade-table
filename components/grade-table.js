@@ -2,30 +2,23 @@ class GradeTable {
   constructor(tableElement, noGradesElement){
   this.tableElement = tableElement;
   this.deleteGrade = null;
-  this.noGradesElement = noGradesElement
+  this.noGradesElement = noGradesElement;
+  this.renderGradeRow = this.renderGradeRow.bind(this);
   }
   updateGrades(grades){
     var tableBody = document.querySelector("tbody");
     while (tableBody.firstChild) {
       tableBody.removeChild(tableBody.firstChild);
     }
+
     for(var i = 0; i < grades.length; i++){
-      var trElement = document.createElement("tr");
+      var renderGrade = this.renderGradeRow(grades[i], this.deleteGrade);
 
-      var tdElement = document.createElement("td");
-      tdElement.textContent = grades[i].name;
-      var td2Element = document.createElement("td");
-      td2Element.textContent = grades[i].course;
-      var td3Element = document.createElement("td");
-      td3Element.textContent = grades[i].grade;
-
-      trElement.append(tdElement);
-      trElement.append(td2Element);
-      trElement.append(td3Element);
-      tableElement.append(trElement);
+      // tableBody.append(renderGrade);
     }
+
     console.log(grades)
-    this.renderGradeRow(grades, this.deleteGrade);
+    // this.renderGradeRow(grades, this.deleteGrade);
     var pElement = document.querySelector("p");
     if(!grades){
       pElement.textContent = "There are no grades";
@@ -35,31 +28,34 @@ class GradeTable {
     this.deleteGrade = deleteGrade;
   }
   renderGradeRow(data, deleteGrade){
-    for(var i = 0; i < data.length; i++){
+      var tableBody = document.querySelector("tbody");
       var tableRow = document.createElement("tr");
 
       var tableData = document.createElement("td");
-      tableData.textContent = data[i].name;
+      tableData.textContent = data.name;
       var tableData2 = document.createElement("td");
-      tableData2.textContent = data[i].course;
+      tableData2.textContent = data.course;
       var tableData3 = document.createElement("td");
-      tableData3.textContent = data[i].grade;
+      tableData3.textContent = data.grade;
       var tableData4 = document.createElement("td");
+      // tableData4.textContent = data.id;
       var button = document.createElement("button");
       button.textContent = "DELETE";
-      button.classList.add('btn btn-danger');
+      button.classList.add('btn');
+      button.classList.add('btn-danger');
       button.setAttribute("type", "submit");
-      button.addEventListener("click", function(){
-        deleteGrade(data[i].id);
-      })
+      button.addEventListener("click", function () {
+          deleteGrade(data.id);
+        })
       tableData4.appendChild(button);
 
       tableRow.append(tableData);
       tableRow.append(tableData2);
       tableRow.append(tableData3);
       tableRow.append(tableData4);
-      tableElement.append(tableRow);
+
+      tableBody.append(tableRow);
     }
 
   }
-}
+// }
