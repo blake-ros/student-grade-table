@@ -8,6 +8,9 @@ class App {
     this.createGrade = this.createGrade.bind(this);
     this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
     this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
+    this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
+    this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
   }
   handleGetGradesError(error){
     console.error(error);
@@ -18,7 +21,7 @@ class App {
     for(var i = 0; i < grades.length; i++){
       gradeTotal += grades[i].grade
     }
-    var averageGrade = gradeTotal / grades.length
+    var averageGrade = Math.round(gradeTotal / grades.length)
     this.pageHeader.updateAverage(averageGrade);
   }
   getGrades(){
@@ -33,14 +36,14 @@ class App {
   start(){
     this.getGrades();
     this.gradeForm.onSubmit(this.createGrade);
+    this.gradeTable.onDeleteClick(this.deleteGrade);
   }
   createGrade(name, course, grade){
-    console.log(name, course, grade);
     $.ajax({
       method: "POST",
       url: "http://sgt.lfzprototypes.com/api/grades",
       headers: { "X-access-token": "0qwwK16q" },
-      data: {"name": name, "course": course, "grade": grade,},
+      data: {"name": name, "course": course, "grade": grade},
       error: this.handleCreateGradeError,
       success: this.handleCreateGradeSuccess,
     })
@@ -49,7 +52,22 @@ class App {
     console.error(error);
   }
   handleCreateGradeSuccess(){
-    this.getGrades;
+    this.getGrades();
   }
+  deleteGrade(id){
+    $.ajax({
+      method: "DELETE",
+      url: "http://sgt.lfzprototypes.com/api/grades/"+ id,
+      headers: { "X-access-token": "0qwwK16q" },
+      error: this.handleDeleteGradeError,
+      success: this.handleDeleteGradeSuccess,
+    })
 
+  }
+  handleDeleteGradeError(error){
+    console.error(error);
+  }
+  handleDeleteGradeSuccess(){
+    this.getGrades();
+  }
 }

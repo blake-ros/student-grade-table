@@ -1,23 +1,55 @@
 class GradeTable {
-  constructor(tableElement){
+  constructor(tableElement, noGradesElement){
   this.tableElement = tableElement;
+  this.deleteGrade = null;
+  this.noGradesElement = noGradesElement;
+  this.renderGradeRow = this.renderGradeRow.bind(this);
   }
   updateGrades(grades){
-    for(var i = 0; i < grades.length; i++){
-      var trElement = document.createElement("tr");
-
-      var tdElement = document.createElement("td");
-      tdElement.textContent = grades[i].name;
-      var td2Element = document.createElement("td");
-      td2Element.textContent = grades[i].course;
-      var td3Element = document.createElement("td");
-      td3Element.textContent = grades[i].grade;
-
-      trElement.append(tdElement);
-      trElement.append(td2Element);
-      trElement.append(td3Element);
-      tableElement.append(trElement);
+    var tableBody = document.querySelector("tbody");
+    while (tableBody.firstChild) {
+      tableBody.removeChild(tableBody.firstChild);
     }
-    console.log(grades)
+
+    for(var i = 0; i < grades.length; i++){
+      this.renderGradeRow(grades[i], this.deleteGrade);
+    }
+    var pElement = document.querySelector("p");
+    if(grades.length === 0){
+      pElement.classList.remove("d-none");
+    } else {
+      pElement.classList.add("d-none");
+    }
   }
-}
+  onDeleteClick(deleteGrade){
+    this.deleteGrade = deleteGrade;
+  }
+  renderGradeRow(data, deleteGrade){
+      var tableBody = document.querySelector("tbody");
+      var tableRow = document.createElement("tr");
+
+      var tableData = document.createElement("td");
+      tableData.textContent = data.name;
+      var tableData2 = document.createElement("td");
+      tableData2.textContent = data.course;
+      var tableData3 = document.createElement("td");
+      tableData3.textContent = data.grade;
+      var tableData4 = document.createElement("td");
+      // tableData4.textContent = data.id;
+      var button = document.createElement("button");
+      button.textContent = "DELETE";
+      button.classList.add('btn');
+      button.classList.add('btn-danger');
+      button.addEventListener("click", function () {
+          deleteGrade(data.id);
+        })
+      tableData4.appendChild(button);
+
+      tableRow.appendChild(tableData)
+      tableRow.appendChild(tableData2)
+      tableRow.appendChild(tableData3)
+      tableRow.appendChild(tableData4);
+      tableBody.appendChild(tableRow);
+    }
+
+  }
