@@ -37,13 +37,17 @@ class GradeTable {
       var tableData4 = document.createElement("td");
       // tableData4.textContent = data.id;
       var button = document.createElement("button");
-      button.textContent = "DELETE";
+      var iconDelete =document.createElement("i");
+      iconDelete.classList.add("fa-trash");
+      iconDelete.classList.add("fas");
+      // button.textContent = "DELETE";
       button.classList.add('btn');
       button.classList.add('btn-danger');
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
       tableData4.appendChild(button);
+      button.appendChild(iconDelete);
 
       tableRow.appendChild(tableData)
       tableRow.appendChild(tableData2)
