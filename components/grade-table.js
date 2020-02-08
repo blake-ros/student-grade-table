@@ -13,12 +13,7 @@ class GradeTable {
 
     for(var i = 0; i < grades.length; i++){
       this.renderGradeRow(grades[i], this.deleteGrade);
-
-      // tableBody.append(renderGrade);
     }
-
-    console.log(grades)
-    // this.renderGradeRow(grades, this.deleteGrade);
     var pElement = document.querySelector("p");
     if(!grades){
       pElement.textContent = "There are no grades";
@@ -58,4 +53,3 @@ class GradeTable {
     }
 
   }
-// }
