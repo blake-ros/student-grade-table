@@ -15,8 +15,10 @@ class GradeTable {
       this.renderGradeRow(grades[i], this.deleteGrade);
     }
     var pElement = document.querySelector("p");
-    if(!grades){
-      pElement.textContent = "There are no grades";
+    if(grades.length === 0){
+      pElement.classList.remove("d-none");
+    } else {
+      pElement.classList.add("d-none");
     }
   }
   onDeleteClick(deleteGrade){
@@ -38,7 +40,6 @@ class GradeTable {
       button.textContent = "DELETE";
       button.classList.add('btn');
       button.classList.add('btn-danger');
-      // button.setAttribute("type", "submit");
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
