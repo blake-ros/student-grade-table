@@ -37,17 +37,26 @@ class GradeTable {
       var tableData4 = document.createElement("td");
       // tableData4.textContent = data.id;
       var button = document.createElement("button");
-      var iconDelete =document.createElement("i");
+      var button2 = document.createElement("button");
+      var iconDelete = document.createElement("i");
+      var iconEdit = document.createElement("i");
       iconDelete.classList.add("fa-trash");
       iconDelete.classList.add("fas");
+      iconEdit.classList.add("fas");
+      iconEdit.classList.add("fa-edit");
+      button2.classList.add("btn");
+      button2.classList.add("btn-primary");
+      button2.classList.add("mr-3");
       // button.textContent = "DELETE";
       button.classList.add('btn');
       button.classList.add('btn-danger');
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
+      tableData4.appendChild(button2);
       tableData4.appendChild(button);
       button.appendChild(iconDelete);
+      button2.appendChild(iconEdit);
 
       tableRow.appendChild(tableData)
       tableRow.appendChild(tableData2)
