@@ -21,7 +21,7 @@ class App {
     for(var i = 0; i < grades.length; i++){
       gradeTotal += grades[i].grade
     }
-    var averageGrade = gradeTotal / grades.length
+    var averageGrade = Math.round(gradeTotal / grades.length)
     this.pageHeader.updateAverage(averageGrade);
   }
   getGrades(){
