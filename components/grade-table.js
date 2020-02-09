@@ -24,7 +24,7 @@ class GradeTable {
   onDeleteClick(deleteGrade){
     this.deleteGrade = deleteGrade;
   }
-  renderGradeRow(data, deleteGrade){
+  renderGradeRow(data, deleteGrade, editGrade){
       var tableBody = document.querySelector("tbody");
       var tableRow = document.createElement("tr");
 
@@ -54,7 +54,7 @@ class GradeTable {
           deleteGrade(data.id);
         })
       button2.addEventListener("click", function() {
-
+          editGrade(data.id);
       })
       tableData4.appendChild(button2);
       tableData4.appendChild(button);
