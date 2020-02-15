@@ -4,6 +4,7 @@ class GradeTable {
   this.deleteGrade = null;
   this.noGradesElement = noGradesElement;
   this.renderGradeRow = this.renderGradeRow.bind(this);
+  this.editGrade = null;
   }
   updateGrades(grades){
     var tableBody = document.querySelector("tbody");
@@ -12,7 +13,7 @@ class GradeTable {
     }
 
     for(var i = 0; i < grades.length; i++){
-      this.renderGradeRow(grades[i], this.deleteGrade);
+      this.renderGradeRow(grades[i], this.deleteGrade, this.editGrade);
     }
     var pElement = document.querySelector("p");
     if(grades.length === 0){
@@ -23,6 +24,9 @@ class GradeTable {
   }
   onDeleteClick(deleteGrade){
     this.deleteGrade = deleteGrade;
+  }
+  onUpdateClick(editGrade){
+    this.editGrade = editGrade;
   }
   renderGradeRow(data, deleteGrade, editGrade){
       var tableBody = document.querySelector("tbody");
@@ -74,7 +78,7 @@ class GradeTable {
         addGradeHeader.textContent = "Update Grade";
         addButton.textContent = "Update";
 
-
+          editGrade(data.id);
       })
       tableData4.appendChild(button2);
       tableData4.appendChild(button);
