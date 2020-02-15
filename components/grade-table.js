@@ -40,6 +40,7 @@ class GradeTable {
       var button2 = document.createElement("button");
       var iconDelete = document.createElement("i");
       var iconEdit = document.createElement("i");
+
       iconDelete.classList.add("fa-trash");
       iconDelete.classList.add("fas");
       iconEdit.classList.add("fas");
@@ -50,11 +51,30 @@ class GradeTable {
       // button.textContent = "DELETE";
       button.classList.add('btn');
       button.classList.add('btn-danger');
+
+      var inputField = document.getElementById("name");
+      var inputField2 = document.getElementById("course");
+      var inputField3 = document.getElementById("grade");
+
+      var addGradeHeader = document.getElementById("addGrade");
+      var addButton = document.getElementById("add");
+
+      // var updateName = document.createTextNode(data.name);
+      // var updateCourse = document.createTextNode(data.course);
+      // var updateGrade = document.createTextNode(data.grade);
+
       button.addEventListener("click", function () {
           deleteGrade(data.id);
         })
       button2.addEventListener("click", function() {
-          editGrade(data.id);
+        inputField.placeholder = data.name
+        inputField2.placeholder = data.course
+        inputField3.placeholder = data.grade
+
+        addGradeHeader.textContent = "Update Grade";
+        addButton.textContent = "Update";
+
+
       })
       tableData4.appendChild(button2);
       tableData4.appendChild(button);
